@@ -1,0 +1,36 @@
+extend type Query {
+	cart(id: ID!): Cart
+}
+
+extend type Mutation {
+	cartAddItem(id: ID!, input: MutationCartAddItemInput!): Cart!
+	cartFindOrCreate(
+		id: ID
+		input: MutationCartFindOrCreateInput!
+	): Cart!
+}
+
+input MutationCartFindOrCreateInput {
+	productId: String!
+	quantity: Int = 1
+}
+
+input CartItemInput {
+	productId: String!
+	quantity: Int! = 1
+}
+
+input MutationCartAddItemInput {
+	item: CartItemInput!
+}
+
+type Cart {
+	id: ID!
+	items: [CartItem!]!
+	total: Float!
+}
+
+type CartItem {
+	product: Product!
+	quantity: Int!
+}

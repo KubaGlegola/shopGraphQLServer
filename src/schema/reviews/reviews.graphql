@@ -1,0 +1,7 @@
+type Review {
+	id: ID!
+	title: String!
+	description: String!
+	rating: Int!
+	createdAt: DateTime!
+}

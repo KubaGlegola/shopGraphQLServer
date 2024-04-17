@@ -1,0 +1,20 @@
+extend type Query {
+	orders: [Order!]!
+	order(id: ID!): Order
+}
+
+type Order {
+	id: ID!
+	totalAmount: Int!
+	lines: JSON!
+	status: OrderStatus!
+	createdAt: DateTime!
+	updatedAt: DateTime!
+}
+
+enum OrderStatus {
+	CANCELLED
+	CREATED
+	FULLFILLED
+	PAID
+}
