@@ -1,8 +1,11 @@
 import type { QueryResolvers } from "./../../../../graphql/types.generated";
 export const product: NonNullable<QueryResolvers["product"]> = async (
 	_parent,
-	_arg,
-	_ctx,
+	arg,
+	ctx,
 ) => {
-	/* Implement Query.product resolver logic here */
+	return await ctx.prisma.product.findUnique({
+		where: { id: arg.id },
+		include: { reviews: true },
+	});
 };

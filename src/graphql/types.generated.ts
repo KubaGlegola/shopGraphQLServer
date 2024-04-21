@@ -80,6 +80,9 @@ export type Mutation = {
 	__typename?: "Mutation";
 	cartAddItem: Cart;
 	cartFindOrCreate: Cart;
+	productCreate: Product;
+	productDelete: Product;
+	productUpdate: Product;
 };
 
 export type MutationcartAddItemArgs = {
@@ -92,13 +95,39 @@ export type MutationcartFindOrCreateArgs = {
 	input: MutationCartFindOrCreateInput;
 };
 
+export type MutationproductCreateArgs = {
+	input: MutationProductCreateInput;
+};
+
+export type MutationproductDeleteArgs = {
+	id: Scalars["ID"]["input"];
+};
+
+export type MutationproductUpdateArgs = {
+	id: Scalars["ID"]["input"];
+	input: MutationProductUpdateInput;
+};
+
 export type MutationCartAddItemInput = {
 	item: CartItemInput;
 };
 
 export type MutationCartFindOrCreateInput = {
-	productId: Scalars["String"]["input"];
-	quantity?: InputMaybe<Scalars["Int"]["input"]>;
+	items?: InputMaybe<Array<CartItemInput>>;
+};
+
+export type MutationProductCreateInput = {
+	description: Scalars["String"]["input"];
+	image: Scalars["String"]["input"];
+	name: Scalars["String"]["input"];
+	price: Scalars["Int"]["input"];
+};
+
+export type MutationProductUpdateInput = {
+	description?: InputMaybe<Scalars["String"]["input"]>;
+	image?: InputMaybe<Scalars["String"]["input"]>;
+	name?: InputMaybe<Scalars["String"]["input"]>;
+	price?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
 export type Order = {
@@ -320,6 +349,12 @@ export type ResolversTypes = {
 	MutationCartFindOrCreateInput: ResolverTypeWrapper<
 		Mapper<MutationCartFindOrCreateInput>
 	>;
+	MutationProductCreateInput: ResolverTypeWrapper<
+		Mapper<MutationProductCreateInput>
+	>;
+	MutationProductUpdateInput: ResolverTypeWrapper<
+		Mapper<MutationProductUpdateInput>
+	>;
 	Order: ResolverTypeWrapper<Mapper<Order>>;
 	OrderStatus: ResolverTypeWrapper<Mapper<OrderStatus>>;
 	Product: ResolverTypeWrapper<Mapper<Product>>;
@@ -344,6 +379,8 @@ export type ResolversParentTypes = {
 	Mutation: {};
 	MutationCartAddItemInput: Mapper<MutationCartAddItemInput>;
 	MutationCartFindOrCreateInput: Mapper<MutationCartFindOrCreateInput>;
+	MutationProductCreateInput: Mapper<MutationProductCreateInput>;
+	MutationProductUpdateInput: Mapper<MutationProductUpdateInput>;
 	Order: Mapper<Order>;
 	Product: Mapper<Product>;
 	Query: {};
@@ -448,6 +485,24 @@ export type MutationResolvers<
 		ParentType,
 		ContextType,
 		RequireFields<MutationcartFindOrCreateArgs, "input">
+	>;
+	productCreate?: Resolver<
+		ResolversTypes["Product"],
+		ParentType,
+		ContextType,
+		RequireFields<MutationproductCreateArgs, "input">
+	>;
+	productDelete?: Resolver<
+		ResolversTypes["Product"],
+		ParentType,
+		ContextType,
+		RequireFields<MutationproductDeleteArgs, "id">
+	>;
+	productUpdate?: Resolver<
+		ResolversTypes["Product"],
+		ParentType,
+		ContextType,
+		RequireFields<MutationproductUpdateArgs, "id" | "input">
 	>;
 };
 

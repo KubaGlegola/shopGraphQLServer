@@ -3,6 +3,12 @@ extend type Query {
 	product(id: ID!): Product
 }
 
+extend type Mutation {
+	productCreate(input: MutationProductCreateInput!): Product!
+	productUpdate(id: ID!, input: MutationProductUpdateInput!): Product!
+	productDelete(id: ID!): Product!
+}
+
 type Product {
 	id: ID!
 	name: String!
@@ -10,4 +16,18 @@ type Product {
 	description: String!
 	image: String!
 	reviews: [Review!]!
+}
+
+input MutationProductCreateInput {
+	name: String!
+	price: Int!
+	description: String!
+	image: String!
+}
+
+input MutationProductUpdateInput {
+	name: String
+	price: Int
+	description: String
+	image: String
 }

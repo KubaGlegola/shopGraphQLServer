@@ -28,6 +28,7 @@
 		"prettier": "^3.2.5",
 		"prettier-plugin-prisma": "^5.0.0",
 		"prisma": "^5.11.0",
+		"slugify": "^1.6.6",
 		"tsx": "^4.7.1",
 		"typescript": "^5.4.3"
 	}

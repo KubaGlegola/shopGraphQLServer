@@ -6,6 +6,9 @@ import { Category } from "./../schema/categories/resolvers/Category";
 import { Collection } from "./../schema/collections/resolvers/Collection";
 import { cartAddItem as Mutation_cartAddItem } from "./../schema/cart/resolvers/Mutation/cartAddItem";
 import { cartFindOrCreate as Mutation_cartFindOrCreate } from "./../schema/cart/resolvers/Mutation/cartFindOrCreate";
+import { productCreate as Mutation_productCreate } from "./../schema/products/resolvers/Mutation/productCreate";
+import { productDelete as Mutation_productDelete } from "./../schema/products/resolvers/Mutation/productDelete";
+import { productUpdate as Mutation_productUpdate } from "./../schema/products/resolvers/Mutation/productUpdate";
 import { Order } from "./../schema/orders/resolvers/Order";
 import { Product } from "./../schema/products/resolvers/Product";
 import { cart as Query_cart } from "./../schema/cart/resolvers/Query/cart";
@@ -34,6 +37,9 @@ export const resolvers: Resolvers = {
 	Mutation: {
 		cartAddItem: Mutation_cartAddItem,
 		cartFindOrCreate: Mutation_cartFindOrCreate,
+		productCreate: Mutation_productCreate,
+		productDelete: Mutation_productDelete,
+		productUpdate: Mutation_productUpdate,
 	},
 
 	Cart: Cart,

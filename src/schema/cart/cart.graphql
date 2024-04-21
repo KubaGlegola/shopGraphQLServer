@@ -11,8 +11,7 @@ extend type Mutation {
 }
 
 input MutationCartFindOrCreateInput {
-	productId: String!
-	quantity: Int = 1
+	items: [CartItemInput!]
 }
 
 input CartItemInput {
